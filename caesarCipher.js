@@ -1,5 +1,6 @@
 // Get input from the command line
 const args = process.argv.slice(2);
+
 // Check if the user provided exactly two arguments
 if (args.length !== 3) {
     console.error('I need exactly 2 strings & 1 number, in this exact order! ("method" "string to encode" shift)');
@@ -15,9 +16,9 @@ if (typeof args[1] !== 'string') {
     console.error('Second argument needs to be a string!');
     return;
 }
-// Check if the second argument is a number
+// Check if the third argument is a number
 if (isNaN(args[2])) {
-    console.error('Second argument needs to be a number!');
+    console.error('Third argument needs to be a number!');
     return;
 }
 
@@ -33,6 +34,7 @@ const action = args[0];
 // from user input (latin has no upper or lower case)
 const inputString = args[1].toLowerCase();
 
+// we will(possibly) need to change the shifting direction
 let shiftToUse = args[2];
 switch (action) {
     case 'encode':
@@ -70,9 +72,10 @@ const translateWord = (word) => {
 // split string into words
 const inputArray = inputString.split(' ');
 
-// translate all words & storethem into the outputArray
+// translate all words & store them into the outputArray
 for (let i in inputArray) {
     outputArray.push(translateWord(inputArray[i]));
 }
 
+// output the results
 console.log(outputArray.join(' '));
