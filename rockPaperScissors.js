@@ -58,9 +58,13 @@ let feedback = '';
 if(userMove === computerMove){
     // both user and computer chose the same move
     feedback = "It's a draw!";
+}else if(computerMove === 'atomicBomb'){
+    // special
+    feedback = "Computer was cheating and utterly destroyed you!";
 }else{
      // someone has won
      feedback = isUserWinner ? 'You win!' : 'Computer wins!';
 }
 
+// output the results
 console.info(`You chose the '${possibleMovesObject[userMove].name}'. Computer chose the '${possibleMovesObject[computerMove].name}'. ${feedback}`);
